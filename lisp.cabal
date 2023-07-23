@@ -1,0 +1,38 @@
+cabal-version:      3.0
+name:               lisp
+version:            0.1.0.0
+-- synopsis:
+-- description:
+license:            ISC
+license-file:       LICENSE
+-- author:
+-- maintainer:
+-- copyright:
+category:           Language
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+-- extra-source-files:
+
+common base
+    default-language: GHC2021
+    ghc-options:      -Wall -Wcompat -Werror=incomplete-patterns
+    build-depends:    base ^>=4.16.4.0, text
+
+library
+    import:           base
+    exposed-modules:
+        Lisp
+        Lisp.Parser
+        Lisp.Interpreter
+    hs-source-dirs:  src
+    build-depends:   megaparsec
+
+executable lisp
+    import:           base
+    main-is:          Main.hs
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    lisp
+    hs-source-dirs:   app
+    autogen-modules:  Paths_lisp
+    other-modules:    Paths_lisp
